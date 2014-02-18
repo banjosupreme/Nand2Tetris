@@ -1,0 +1,15 @@
+/** 
+ * Multiplexor. If sel==1 then out=b else out=a.
+ */
+
+CHIP Mux {
+  IN a, b, sel;
+  OUT out;
+
+  PARTS:
+  // Put your code here:
+	Not(a = sel, out = aout);
+	And(a = a, b = aout, out = int1);
+	And(a = b, b = sel, out = int2);
+	Or(a = int1, b = int2, out = out);
+}
